@@ -4,7 +4,7 @@ const path = require('path');
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.js', // Убедитесь, что у вас есть файл index.js в папке src
+  entry: './src/index.js',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
@@ -14,7 +14,7 @@ module.exports = {
       {
         test: /\.s[ac]ss$/i,
         use: [
-          MiniCssExtractPlugin.loader,
+          'style-loader',
           'css-loader',
           'sass-loader',
         ],
@@ -23,7 +23,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html', // Укажите путь к вашему HTML-шаблону
+      template: './src/index.html',
+      cache: false, // Добавьте эту строку для отключения кэширования
     }),
     new MiniCssExtractPlugin({
       filename: '[name].css',
@@ -35,5 +36,8 @@ module.exports = {
     },
     compress: true,
     port: 9000,
+    hot: true,
+    liveReload: true, // Включите liveReload, добавив эту строку
+    watchFiles: ['src/index.html'], // Укажите, какие файлы отслеживать, добавив эту строку
   },
 };
