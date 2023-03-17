@@ -24,20 +24,27 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
-      cache: false, // Добавьте эту строку для отключения кэширования
+      cache: false,
     }),
     new MiniCssExtractPlugin({
       filename: '[name].css',
     }),
   ],
   devServer: {
-    static: {
-      directory: path.join(__dirname, 'dist'),
-    },
+    static: [
+      {
+        directory: path.join(__dirname, 'dist'),
+      },
+      {
+        directory: path.join(__dirname, 'src'), // Добавьте эту строку
+        staticOptions: {}, // Добавьте эту строку
+        serveIndex: true, // Добавьте эту строку
+      },
+    ],
     compress: true,
     port: 9000,
     hot: true,
-    liveReload: true, // Включите liveReload, добавив эту строку
-    watchFiles: ['src/index.html'], // Укажите, какие файлы отслеживать, добавив эту строку
+    liveReload: true,
+    watchFiles: ['src/index.html'],
   },
 };

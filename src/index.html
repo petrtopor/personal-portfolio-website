@@ -28,7 +28,7 @@
       <main>
           <section>
               <h1>Вадим Кушн2р - сильный программист</h1>
-              <h2>Виртуоз VueJS, ценный работник и непревзойдённый аферист!</h2>
+              <h2 id="dynamicPhrase">щдщдщ</h2>
           </section>
           <!-- Здесь будут другие разделы вашего сайта, такие как портфолио, обо мне, блог и контакты -->
       </main>
@@ -37,5 +37,30 @@
           <p>Следуйте своим мечтам и никогда не сдавайтесь!</p>
       </footer>
     </div> <!-- Закройте div с классом wrapper -->
+    <script>
+      async function fetchPhrases() {
+        const response = await fetch("phrases.json");
+        const data = await response.json();
+        return data.phrases;
+      }
+    
+      function changePhrase(phrases) {
+        const index = Math.floor(Math.random() * phrases.length);
+        const newPhrase = phrases[index];
+        const phraseElement = document.querySelector("#dynamicPhrase");
+        phraseElement.textContent = newPhrase;
+      }
+    
+      fetchPhrases()
+        .then((phrases) => {
+          changePhrase(phrases);
+          setInterval(() => {
+            changePhrase(phrases);
+          }, 2000);
+        })
+        .catch((error) => {
+          console.error("Ошибка при загрузке фраз:", error);
+        });
+    </script>    
 </body>
 </html>
