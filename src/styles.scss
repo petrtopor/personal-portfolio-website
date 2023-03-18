@@ -1,4 +1,4 @@
-// Общие стили
+// Global styles
 html, body {
   margin: 0;
   padding: 0;
@@ -12,94 +12,94 @@ html, body {
   min-height: 100%;
 }
 
-main {
-  flex: 1;
-}
-
-// Навигационная панель
+// Navigation bar
 header {
   background-color: #f48024;
   padding: 5px 0;
   height: 60px;
-  display: flex; // Добавьте это
-  align-items: center; // Добавьте это
-  justify-content: space-between; // Добавьте это
-  padding: 0 20px; // Добавьте это
-}
-
-.logo {
-  display: inline-block;
-}
-
-.logo a {
-  font-weight: bold;
-  color: #fff;
-  text-decoration: none;
-  font-size: 18px;
-}
-
-nav {
-  display: flex; // Добавьте это
-  align-items: center; // Добавьте это
-}
-
-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+
+  .logo {
+    display: inline-block;
+
+    a {
+      font-weight: bold;
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+    }
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+
+      li {
+        margin-right: 20px;
+
+        a {
+          text-decoration: none;
+          color: #fff;
+          font-size: 14px;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+
+  .download-resume {
+    display: flex;
+    align-items: center;
+
+    a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 14px;
+      border: 1px solid #fff;
+      padding: 5px 10px;
+      border-radius: 3px;
+
+      &:hover {
+        background-color: #fff;
+        color: #f48024;
+      }
+    }
+  }
 }
 
-nav ul li {
-  margin-right: 20px;
+// Main content
+main {
+  flex: 1;
+
+  section {
+    text-align: center;
+    padding: 20px 0;
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 40px;
+    }
+  }
 }
 
-nav ul li a {
-  text-decoration: none;
-  color: #fff;
-  font-size: 14px;
-}
-
-nav ul li a:hover {
-  text-decoration: underline;
-}
-
-.download-resume {
-  display: flex; // Добавьте это
-  align-items: center; // Добавьте это
-}
-
-.download-resume a {
-  text-decoration: none;
-  color: #fff;
-  font-size: 14px;
-  border: 1px solid #fff;
-  padding: 5px 10px;
-  border-radius: 3px;
-}
-
-.download-resume a:hover {
-  background-color: #fff;
-  color: #f48024;
-}
-
-// Основной контент
-section {
-  text-align: center;
-  padding: 20px 0;
-}
-
-h1 {
-  font-size: 36px;
-  margin-bottom: 20px;
-}
-
-h2 {
-  font-size: 24px;
-  margin-bottom: 40px;
-}
-
-// Футер
+// Footer
 footer {
   background-color: #2d2d2d;
   color: #fff;
