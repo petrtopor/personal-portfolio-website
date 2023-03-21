@@ -1,10 +1,10 @@
-async function fetchPhrases(elementId, jsonFile, phrasesKey, interval) {
+async function fetchPhrases(elementId, jsonFile, interval) {
   try {
+    console.log(`fetchPhrases(elementId: ${elementId}, jsonFile: ${jsonFile}, interval: ${interval})`)
     const response = await fetch(jsonFile);
-    const data = await response.json();
-    const phrases = data[phrasesKey];
+    const phrases = await response.json();
 
-    if (!phrases) throw new Error(`Phrases not found for key: ${phrasesKey}`);
+    if (!phrases) throw new Error(`Phrases not found for key: ${jsonFile}`);
 
     const element = document.getElementById(elementId);
     if (!element) throw new Error(`Element not found for id: ${elementId}`);
@@ -42,6 +42,6 @@ async function fetchPhrases(elementId, jsonFile, phrasesKey, interval) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  fetchPhrases("dynamicPhrase", "phrases.json", "subheaderPhrases", 4000);
-  fetchPhrases("footerPhrase", "phrases.json", "footerPhrases", 3000);
+  fetchPhrases("dynamicPhrase", "https://nestjs-backend-service.onrender.com/phrases/subheader", 4000);
+  fetchPhrases("footerPhrase", "https://nestjs-backend-service.onrender.com/phrases/footer", 3000);
 });
