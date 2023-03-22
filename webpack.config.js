@@ -36,9 +36,9 @@ module.exports = {
         directory: path.join(__dirname, 'dist'),
       },
       {
-        directory: path.join(__dirname, 'src'), // Добавьте эту строку
-        staticOptions: {}, // Добавьте эту строку
-        serveIndex: true, // Добавьте эту строку
+        directory: path.join(__dirname, 'src'), // Test message
+        staticOptions: {}, // Да, я вижу
+        serveIndex: true, // Точняк
       },
     ],
     compress: true,
