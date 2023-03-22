@@ -26,6 +26,11 @@ module.exports = {
       template: './src/index.html',
       cache: false,
     }),
+    new HtmlWebpackPlugin({
+      template: './src/control-panel.html',
+      filename: 'control-panel.html',
+      cache: false,
+    }),
     new MiniCssExtractPlugin({
       filename: '[name].css',
     }),
@@ -36,15 +41,15 @@ module.exports = {
         directory: path.join(__dirname, 'dist'),
       },
       {
-        directory: path.join(__dirname, 'src'), // Test message
-        staticOptions: {}, // Да, я вижу
-        serveIndex: true, // Точняк
+        directory: path.join(__dirname, 'src'),
+        staticOptions: {},
+        serveIndex: true,
       },
     ],
     compress: true,
     port: 9000,
     hot: true,
     liveReload: true,
-    watchFiles: ['src/index.html'],
+    watchFiles: ['src/index.html', 'src/control-panel.html'],
   },
 };
