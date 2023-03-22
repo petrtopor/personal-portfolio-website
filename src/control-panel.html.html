@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Control Panel</title>
+    <script defer src="bot.js"></script>
+  </head>
+  <body>
+    <h1>Telegram Bot Configuration</h1>
+    <form id="bot-config-form">
+      <label for="api-token">Telegram Bot API Token:</label>
+      <input type="text" id="api-token" name="api-token" required>
+      <br><br>
+      <label for="web-app-deep-link">Web App Deep Link:</label>
+      <input type="url" id="web-app-deep-link" name="web-app-deep-link" required>
+      <br><br>
+      <button type="submit">Start Bot</button>
+    </form>
+    <script>
+      const form = document.getElementById("bot-config-form");
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const apiToken = document.getElementById("api-token").value;
+        const webAppDeepLink = document.getElementById("web-app-deep-link").value;
+        startBot(apiToken, webAppDeepLink);
+      });
+    </script>
+  </body>
+</html>
