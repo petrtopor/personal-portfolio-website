@@ -31,6 +31,11 @@ module.exports = {
       filename: 'control-panel.html',
       cache: false,
     }),
+    new HtmlWebpackPlugin({
+      template: './src/telegram-web-app.html',
+      filename: 'telegram-web-app.html',
+      cache: false,
+    }),
     new MiniCssExtractPlugin({
       filename: '[name].css',
     }),
