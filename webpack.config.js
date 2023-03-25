@@ -4,9 +4,12 @@ const path = require('path');
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.js',
+  entry: {
+    main: './src/index.js',
+    'telegram-web-app': './src/telegram-web-app.js', // Add this line
+  },
   output: {
-    filename: 'bundle.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
   },
   module: {
@@ -25,16 +28,19 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
       cache: false,
+      chunks: ['main'], // Add this line
     }),
     new HtmlWebpackPlugin({
       template: './src/control-panel.html',
       filename: 'control-panel.html',
       cache: false,
+      chunks: ['main'], // Add this line
     }),
     new HtmlWebpackPlugin({
       template: './src/telegram-web-app.html',
       filename: 'telegram-web-app.html',
       cache: false,
+      chunks: ['telegram-web-app'], // Add this line
     }),
     new MiniCssExtractPlugin({
       filename: '[name].css',

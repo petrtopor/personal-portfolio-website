@@ -23,7 +23,7 @@ async function getUpdates(offset, webAppDeepLink) {
 
   if (updates && updates.result) {
     for (const update of updates.result) {
-      if (update.message && update.message.text && update.message.text.toLowerCase() === '/start') {
+      if (update.message && update.message.text && update.message.text.toLowerCase().startsWith('/start')) {
         await sendStartMessage(update.message.chat.id, webAppDeepLink);
       }
       offset = update.update_id + 1;
