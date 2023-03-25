@@ -14,37 +14,16 @@ const createTextElement = (elementId, contentText, fallbackText) => {
       platformInfo.textContent = fallbackText;
     }
   }
-};
-
-const createButton = (buttonText, onClickFunction) => {
-  const button = document.createElement('button');
-  button.textContent = buttonText;
-  document.body.appendChild(button);
-  button.addEventListener('click', onClickFunction);
-};
+}
 
 document.addEventListener('DOMContentLoaded', function () {
-  createTextElement(
-    'platform-info',
-    `Platform: ${window.Telegram.WebApp.platform}`,
-    'Platform information not available.'
-  );
+  createTextElement('platform-info', `Platform: ${window.Telegram.WebApp.platform}`, 'Platform information not available.');
 
-  createButton('Press me', () => {
-    fetch('https://a917-5-76-59-196.eu.ngrok.io')
-      .then((response) => {
-        if (response.ok) {
-          return response.text();
-        } else {
-          throw new Error('Network response was not ok');
-        }
-      })
-      .then((data) => {
-        const button = document.querySelector('button');
-        button.textContent = data;
-      })
-      .catch((error) => {
-        console.error('There was a problem with the fetch operation:', error);
-      });
+  const fetchDataButton = document.getElementById('fetchDataButton');
+
+  fetchDataButton.addEventListener('click', async () => {
+    const response = await fetch('https://a917-5-76-59-196.eu.ngrok.io');
+    const data = await response.text();
+    fetchDataButton.textContent = data;
   });
 });
